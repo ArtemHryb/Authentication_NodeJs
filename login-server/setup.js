@@ -1,6 +1,5 @@
 import "dotenv/config";
-
-import { user } from "./src/models/user.js";
 import { client } from "./src/utils/db.js";
+import { User } from "./src/models/user.js";
 
 client.sync({ force: true });

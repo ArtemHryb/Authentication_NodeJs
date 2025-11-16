@@ -12,13 +12,28 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const info = await transporter.sendMail({
-  // from: '',
-  to: 'kebibim547@etramay.com',
-  subject: 'HELLO)))',
-  text: 'Hello world?',
-  html: '<b>Hello world?</b>',
-});
+function send({ email, subject, html }) {
+  return transporter.sendMail({
+    to: email,
+    subject,
+    html,
+  });
+}
 
-console.log('Message sent');
+function sendActivationEmail(email, token) {
+  const href = `${process.env.CLIENT_HOST}/activation/${token}`;
 
+  const html = `
+  <h1>Activate your account</h1>
+  <a href="${href}">Click <b>${href}</b> to activate your account</a>
+  `;
+
+  return send({ email, subject: "Activate your account", html });
+}
+
+export const emailService = {
+  sendActivationEmail,
+  send,
+};
+
+console.log("Message sent");

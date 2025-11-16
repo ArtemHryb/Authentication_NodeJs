@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
       accessTokenService.save(accessToken);
       setUser(user);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('User is not authentincated');
     } finally {
       setChecked(true);
