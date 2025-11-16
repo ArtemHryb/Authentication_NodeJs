@@ -90,14 +90,14 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="sign-up" element={<RegistrationPage />} />
             <Route
-              path="activate/:activationToken"
+              path="activation/:activationToken"
               element={<AccountActivationPage />}
             />
             <Route path="login" element={<LoginPage />} />
 
-            <Route path="/" element={<RequireAuth />}>
-              <Route path="users" element={<UsersPage />} />
-            </Route>
+            {/* <Route path="/" element={<RequireAuth />}> */}
+            <Route path="users" element={<UsersPage />} />
+            {/* </Route> */}
           </Routes>
         </section>
 
