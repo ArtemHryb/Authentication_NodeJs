@@ -8,6 +8,18 @@ export function getAllActivated() {
   });
 }
 
+function normalize({ id, email }) {
+  return { id, email };
+}
+
+function findByEmail(email) {
+  return User.findOne({
+    where: { email },
+  });
+}
+
 export const userService = {
   getAllActivated,
+  normalize,
+  findByEmail
 };
